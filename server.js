@@ -11,7 +11,7 @@ app.use(express.json());
 
 app.use(morgan('short'));
 app.use('/',router)
-const port = 5000;
-app.listen(port,()=>{
-    console.log(`listening on port ${port}`)
+const PORT = process.env.PORT || 5000;
+app.listen(PORT,()=>{
+    console.log(`listening on port ${PORT}`)
 });
