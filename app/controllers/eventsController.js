@@ -12,7 +12,7 @@ router.get('/',(req,res) => {
     })
 })
 router.post('/',(req,res) => {
-    let body = _.pick(req.body,['name'])
+    let body = _.pick(req.body,['name','description','eventDate'])
     let event = new Event(body)
     event.save().then((events) => {
         res.send({
@@ -24,7 +24,7 @@ router.post('/',(req,res) => {
     })
 });
 router.get('/:id',(req,res) => {
-    Event.findById(req.params.id).then((event) => {
+    Event.findById(req.params.id).populate('registrations').then((event) => {
         res.send(event)
     })
     

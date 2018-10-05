@@ -7,8 +7,27 @@ const eventSchema = new Schema({
     },
     createdAt: {
         type: Date,
-        default: Date.new
-    }
+        default: Date.now
+    },
+    description: {
+        type: String,
+        required: true,
+        minlength: 5
+    },
+    eventDate: [{
+        startDate: {
+            type: Date,
+            required: true
+        },
+        endDate: {
+            type: Date,
+            required: true
+        }
+    }],
+    registrations: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Registration'
+    }]
 }) 
 
 const Event = mongoose.model('Event',eventSchema);
