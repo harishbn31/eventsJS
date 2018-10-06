@@ -6,7 +6,8 @@ router.get('/',(req,res)=>{
     let ob = {
         name: 'harish'
     }
-    res.redirect('https://www.google.com')
+    // res.sendFile('welcome to RSVP')
+    res.sendFile('./index.html',{ root: './' });
 });
 
 
