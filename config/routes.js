@@ -9,7 +9,7 @@ const {regController} = require('../app/controllers/registrationsController')
 router.get('/', (req, res) => {
     // res.send("Hello")
     // res.sendFile('index.html' , { root : 'app/react/build'});
-    res.sendFile('main.html' , { root : 'app/react/build'});
+    res.sendFile('index.html' , { root : 'app/react/build'});
   });
 router.use('/events',eventsController)
 router.use('/registrations',regController)
