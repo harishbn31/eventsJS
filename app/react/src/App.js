@@ -77,7 +77,7 @@ class BasicExample extends React.Component {
 
     }
         return (
-          // <Example />
+          
           <div>
             <h2>Welcome to React basics</h2>
             <button  onClick={(evn) => this.buttonHandler("hello")}>Switch Name</button>
@@ -90,7 +90,7 @@ class BasicExample extends React.Component {
               <h3>Hello new div</h3>
             </div> : null
             }
-          
+            <Example />
           </div>
         )
   }
