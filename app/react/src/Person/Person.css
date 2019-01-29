@@ -1,0 +1,10 @@
+.Person {
+    color: blue;
+    width: 60%;
+    border: 1px solid #eee;
+    
+    }
+button {
+    color: blue;
+    background-color: gray;
+}
