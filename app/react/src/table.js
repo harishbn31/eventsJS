@@ -7,7 +7,7 @@ export default class Example extends Component {
     events: []
   }
   componentDidMount() {
-    axios.get(`http://rsvp-dct.herokuapp.com/events`)
+    axios.get(`http://localhost:5000/events`)
       .then(res => {
         const events = res.data;
         this.setState({ events });
