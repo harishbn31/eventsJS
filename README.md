@@ -23,7 +23,7 @@ Note:
  app.use(express.static(path.join(__dirname, '../app/react/build')));
 
  app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/react/build/index.html'));
+  res.sendFile(path.join(__dirname, '/react/build/index.html'));
  });
 ```
 ## Node package.json
