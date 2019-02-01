@@ -74,7 +74,7 @@ import {
                 </Collapse>
               </Navbar>
             <Route exact path="/login" component={Login} />
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" component={Home} exact/>
             <Route path="/about" component={About} />
             <Route path="/topics" component={Topics} />
             <Route path="/custom" component={Custom} />
@@ -118,8 +118,8 @@ import {
       function Home() {
         return (
           <div>
-            <h2>Events</h2>
-            <Table />
+           <h2>Events</h2>
+           <Table />
           </div>
         );
       }

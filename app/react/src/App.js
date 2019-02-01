@@ -76,10 +76,17 @@ class BasicExample extends React.Component {
       backgroundColor: 'yellow'
 
     }
+    let persons = null;
+    if(this.state.showDiv){
+      persons = (
+        <div className="to-show">
+              <h3>Hello new div</h3>
+            </div>
+      )
+    }
         return (
-          
           <div>
-             <Example />
+            {/* <Example /> */}
             <h2>Welcome to React basics</h2>
             <button  onClick={(evn) => this.buttonHandler("hello")}>Switch Name</button>
             {this.state.persons.map(person => (
@@ -87,11 +94,7 @@ class BasicExample extends React.Component {
               )
             )}
             <button onClick={this.toggleChange.bind(this)}>toggle Change</button> 
-            {this.state.showDiv === true ? <div className="to-show">
-              <h3>Hello new div</h3>
-            </div> : null
-            }
-           
+           {persons}
           </div>
         )
   }
