@@ -37,7 +37,8 @@ Note:
 ```javascript
 "proxy": "http://localhost:5000"
 ```
-### Insted of using http://localhost:5000/events use '/events' 
+#### In axios call insted of using http://localhost:5000/ use '/'.
+Example: http://localhost:5000/events use '/events' 
 ### run git commands
 ```git
 git add .
