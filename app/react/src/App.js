@@ -71,6 +71,14 @@ class BasicExample extends React.Component {
     const does = this.state.showDiv
     this.setState({showDiv: !does})
   }
+  delete = (person,index) => {
+    // const persons = this.state.persons
+    // const persons = this.state.persons.slice()
+    // persons.splice(index,1)
+    const persons = [...this.state.persons]
+    persons.splice(index,1)
+    this.setState({persons: persons})
+  }
   render() {
     const style = {
       backgroundColor: 'yellow'
@@ -80,20 +88,28 @@ class BasicExample extends React.Component {
     if(this.state.showDiv){
       persons = (
         <div className="to-show">
-              <h3>Hello new div</h3>
-            </div>
+          <h3>Hello new div</h3>
+        </div>
       )
+      style.backgroundColor = 'green';
+    }
+    let classes = [];
+    if(this.state.persons.length <=2){
+      classes.push('red');
+    }
+    if(this.state.persons.length <= 3){
+      classes.push('bold');
     }
         return (
           <div>
-            {/* <Example /> */}
-            <h2>Welcome to React basics</h2>
+            <Example />
+            <h2 className={classes.join(' ')}>Welcome to React basics</h2>
             <button  onClick={(evn) => this.buttonHandler("hello")}>Switch Name</button>
-            {this.state.persons.map(person => (
-                <Person key={person.name}  click={this.buttonHandler.bind(this,"harish")} name={person.name} age={person.age}/>
+            {this.state.persons.map((person,index) => (
+                <Person key={index}  click={() => this.delete(person,index)} name={person.name} age={person.age}/>
               )
             )}
-            <button onClick={this.toggleChange.bind(this)}>toggle Change</button> 
+            <button style={style} onClick={this.toggleChange.bind(this)}>toggle Change</button> 
            {persons}
           </div>
         )

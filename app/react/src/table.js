@@ -7,7 +7,7 @@ export default class Example extends Component {
     events: []
   }
   componentDidMount() {
-    axios.get(`http://localhost:5000/events`)
+    axios.get(`/events`)
       .then(res => {
         const events = res.data;
         this.setState({ events });
