@@ -20,16 +20,16 @@ Note:
   2. Check the path as your folder structure.
 ```javascript
  const path = require('path');
- app.use(express.static(path.join(__dirname, '../app/react/build')));
+ app.use(express.static(path.join(__dirname, '../your_react_app_folder/build')));
 
- app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/react/build/index.html'));
+ app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '/your_react_app_folder/index.html'));
  });
 ```
 ## Node package.json
  Inside the script object
  ```javascript
-  "heroku-postbuild": "cd app/react/ && npm install && npm run build"
+  "heroku-postbuild": "cd your_react_app_folder && npm install && npm run build"
  ```
 ## Inside react folder package.json file
 
@@ -37,6 +37,7 @@ Note:
 ```javascript
 "proxy": "http://localhost:5000"
 ```
+### Insted of using http://localhost:5000/events use '/events' 
 ### run git commands
 ```git
 git add .
