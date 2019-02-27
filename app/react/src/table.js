@@ -33,7 +33,7 @@ export default class Example extends Component {
             <td >{index+1}</td>
             <td >{event.name}</td>
             <td >{event.description}</td>
-            <td >{event.eventDate[0].startDate}</td>
+            <td >{event.eventDate.startDate}</td>
             <td >{event.createdAt}</td>
             <td>
               <Button id={event._id}  size="sm" color="info">Update</Button>{' '}
