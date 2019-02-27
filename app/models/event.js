@@ -14,14 +14,14 @@ const eventSchema = new Schema({
         required: true,
         minlength: 5
     },
-    eventDate: [{
+    eventDate: {
         startDate: {
             type: Date
         },
         endDate: {
             type: Date
         }
-    }],
+    },
     registrations: [{
         type: Schema.Types.ObjectId,
         ref: 'Registration'
