@@ -16,12 +16,10 @@ const eventSchema = new Schema({
     },
     eventDate: [{
         startDate: {
-            type: Date,
-            required: true
+            type: Date
         },
         endDate: {
-            type: Date,
-            required: true
+            type: Date
         }
     }],
     registrations: [{
