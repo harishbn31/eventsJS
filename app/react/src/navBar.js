@@ -42,6 +42,9 @@ import {
                     <NavLink href="/">Home</NavLink>
                     </NavItem>
                     <NavItem>
+                      <Link to="/events" >Events</Link>
+                    </NavItem>
+                    <NavItem>
                       <NavLink href="/about">About</NavLink>
                     </NavItem>
                     <NavItem>
@@ -74,8 +77,9 @@ import {
                 </Collapse>
               </Navbar>
             <Route exact path="/login" component={Login} />
-            <Route exact path="/" component={Home} exact/>
+            <Route exact path="/" component={Home} />
             <Route path="/about" component={About} />
+            <Route exact path="/events" component={Events} />
             <Route path="/topics" component={Topics} />
             <Route path="/custom" component={Custom} />
           </div>
@@ -99,6 +103,21 @@ import {
           
         }
       }
+      // class Events extends React.Component{
+      //   constructor(props){
+      //     super(props);
+      //     this.state = {
+
+      //     }
+      //   }
+      //   render(){
+      //     return (
+      //       <div>
+      //         <Table />
+      //       </div>
+      //     )
+      //   }
+      // }
       // class Square extends React.Component {
       //   constructor(props) {
       //     super(props);
@@ -118,10 +137,14 @@ import {
       function Home() {
         return (
           <div>
-           <h2>Events</h2>
-           <Table />
+
           </div>
         );
+      }
+      function Events(){
+        return (
+          <Table />
+        )
       }
       function Custom() {
         return (

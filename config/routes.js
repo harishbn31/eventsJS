@@ -8,7 +8,7 @@ const {regController} = require('../app/controllers/registrationsController')
 router.use(express.static(path.join(__dirname, '../app/react/build')));
 // router.use(express.static(path.resolve('app/react/build/index.html')));
 router.get('/', (req, res) => {
-    res.sendFile(path.resolve('../app/react/build/index.html'));
+    res.sendFile(path.join(__dirname, '../app/react/build'));
   });
 router.use('/events',eventsController)
 router.use('/registrations',regController)
