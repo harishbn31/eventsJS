@@ -15,6 +15,8 @@ import {
 
     import FormComp from './form'
     import Table from './table'
+    import EventFormComp from './eventForm'
+    import Root from './home'
     export default class Example extends React.Component {
         constructor(props) {
           super(props);
@@ -39,23 +41,23 @@ import {
                 <Collapse isOpen={this.state.isOpen} navbar>
                   <Nav className="ml-auto" navbar>
                     <NavItem>
-                    <NavLink href="/">Home</NavLink>
-                    </NavItem>
+                    <Link to="/events">Events</Link>
+                    </NavItem> || 
                     <NavItem>
-                      <Link to="/events" >Events</Link>
-                    </NavItem>
+                      <Link to="/" >Home</Link>
+                    </NavItem>  || 
                     <NavItem>
-                      <NavLink href="/about">About</NavLink>
-                    </NavItem>
+                      <Link to="/about">About</Link>
+                    </NavItem> || 
                     <NavItem>
                       <Link to="/topics" >Topics</Link>
-                    </NavItem>
+                    </NavItem> || 
                     <NavItem>
-                      <NavLink href="/custom">Custom</NavLink>
-                    </NavItem>
+                      <Link to="/custom">Custom</Link>
+                    </NavItem> || 
                     <NavItem>
-                      <NavLink href="/login">Login</NavLink>
-                    </NavItem>
+                      <Link to="/login">Login</Link>
+                    </NavItem> || 
                     <UncontrolledDropdown nav inNavbar>
                       <DropdownToggle nav caret>
                         Links
@@ -103,47 +105,20 @@ import {
           
         }
       }
-      // class Events extends React.Component{
-      //   constructor(props){
-      //     super(props);
-      //     this.state = {
-
-      //     }
-      //   }
-      //   render(){
-      //     return (
-      //       <div>
-      //         <Table />
-      //       </div>
-      //     )
-      //   }
-      // }
-      // class Square extends React.Component {
-      //   constructor(props) {
-      //     super(props);
-      //     this.state = {
-      //       value: null,
-      //     };
-      //   }
       
-      //   render() {
-      //     return (
-      //       <Button className="square" onClick={() => alert('click')}>
-      //         {this.props.value}
-      //       Click Here</Button>
-      //     );
-      //   }
-      // }
       function Home() {
         return (
           <div>
-
+            <Root />
           </div>
         );
       }
       function Events(){
         return (
-          <Table />
+          <div>
+            <Table />
+            <EventFormComp />
+          </div>
         )
       }
       function Custom() {
