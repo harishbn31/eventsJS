@@ -6,8 +6,6 @@
     Button,Row
   } from 'reactstrap';
 import axios from 'axios';
-  import './App.css';
-  
   export default class EventFormComp extends Component{
     constructor(props){
         super(props)
@@ -15,10 +13,10 @@ import axios from 'axios';
             name:'',
             description:'',
             startDate: '',
-            result:[]
+            endDate: '',
+            result: []
         }
     }
-    // this.nameChange = this.nameChange.bind(this);
     
     nameChange = (event) => {
         this.setState({name: event.target.value});
@@ -26,37 +24,63 @@ import axios from 'axios';
     desChange = (event) => {
         this.setState({description: event.target.value});
     }
-    dateChange = (event) => {
+    startDateChange = (event) => {
         this.setState({startDate: event.target.value});
+    }
+    endDateChange = (event) => {
+        this.setState({endDate: event.target.value});
     }
    submitForm = (event) => {
        event.preventDefault();
-    console.log(this.state.startDate);
+       let data = {
+           name: this.state.name,
+           description: this.state.description,
+           eventDate: {
+               startDate: this.state.startDate,
+               endDate: this.state.endDate
+           }
+
+        }
+       axios.post('/events',data).then(res=>{
+        this.setState({
+            result:res.data,
+            name: '',
+            description: '',
+            startDate: '',
+            endDate: ''
+        })
+        
+        this.props.handleData(res.data.event)
+    }).catch((err) => console.log(err))
    }
     render(){
         return(
             <div>
             <Container className="">
             <Row>
-                <Col>
-            <h2>Create Event</h2>
-                <Form className="form">
+                <Col md="4">
+                <h2>Create Event</h2>
+                    <Form className="form">
                     <Col>
                     <FormGroup>
                         <Label>Name</Label>
-                        <Input type="text" name="name" onChange={this.nameChange} value={this.state.name}/>
+                        <Input type="text"  name="name" onChange={this.nameChange} value={this.state.name}/>
                     </FormGroup>
                     </Col>
                     <Col>
                     <FormGroup>
                         <Label>Description</Label>
-                        <Input type="textarea" name="desc" onChange={this.desChange} value={this.state.description} />
+                        <Input type="textarea"  name="desc" onChange={this.desChange} value={this.state.description} />
                     </FormGroup>
                     </Col>
                     <Col>
                     <FormGroup>
-                        <Label>Date</Label>
-                        <Input type="date"  onChange={this.dateChange} value={this.state.startDate} />
+                        <Label>Start Date</Label>
+                        <Input type="datetime-local"  onChange={this.startDateChange} value={this.state.startDate} />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>End Date</Label>
+                        <Input type="datetime-local"  onChange={this.endDateChange} value={this.state.endDate} />
                     </FormGroup>
                     </Col>
                     <Col>
@@ -65,7 +89,12 @@ import axios from 'axios';
                     </FormGroup>
                     </Col>
                 </Form>
-                </Col></Row></Container>
+                </Col>
+                <Col md="4">
+                </Col>
+                <Col md="4"></Col>
+                </Row>
+                </Container>
                 
             </div>
         )

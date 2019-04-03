@@ -7,15 +7,13 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink,
     UncontrolledDropdown,
     DropdownToggle,
     DropdownMenu,
     DropdownItem } from 'reactstrap';
 
     import FormComp from './form'
-    import Table from './table'
-    import EventFormComp from './eventForm'
+    import Event from './event'
     import Root from './home'
     export default class Example extends React.Component {
         constructor(props) {
@@ -116,8 +114,7 @@ import {
       function Events(){
         return (
           <div>
-            <Table />
-            <EventFormComp />
+            <Event />
           </div>
         )
       }

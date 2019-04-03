@@ -7,7 +7,8 @@ const eventSchema = new Schema({
     },
     createdAt: {
         type: Date,
-        default: Date.now
+        default: Date.now,
+        required: true
     },
     description: {
         type: String,
@@ -15,12 +16,8 @@ const eventSchema = new Schema({
         minlength: 5
     },
     eventDate: {
-        startDate: {
-            type: Date
-        },
-        endDate: {
-            type: Date
-        }
+        startDate: Date,
+        endDate: Date
     },
     registrations: [{
         type: Schema.Types.ObjectId,

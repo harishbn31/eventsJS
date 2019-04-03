@@ -14,9 +14,9 @@ router.get('/',(req,res) => {
 router.post('/',(req,res) => {
     let body = _.pick(req.body,['name','description','eventDate'])
     let event = new Event(body)
-    event.save().then((events) => {
+    event.save().then((event) => {
         res.send({
-            events,
+            event,
             notice: "Successfully inserted"
         })
     }).catch(err => {

@@ -1,49 +1,50 @@
 import React, { Component } from 'react';
 import { Table, Button } from 'reactstrap';
-import axios from 'axios';
+import moment from 'moment';
 
-export default class Example extends Component {
-  state = {
-    events: []
-  }
-  componentDidMount() {
-    axios.get(`/events`)
-      .then(res => {
-        const events = res.data;
-        this.setState({ events });
-      }).catch(err => console.log(err))
+export default class EventsTable  extends Component {
+  constructor(props){
+    super(props)
+      this.state ={
+        events: []
+    }
   }
 
   render() {
     return (
+      <div>
+        
         <Table>
         <thead>
           <tr>
             <th>#</th>
             <th>Name</th>
             <th>Description</th>
-            <th>Date</th>
+            <th>Start Date</th>
+            <th>End Date</th>
             <th>Created on</th>
             <th> </th>
           </tr>
         </thead>
         <tbody>
-        {this.state.events.map((event, index) => 
+        {this.props.data.map((event, index) => 
           <tr key={index}>
             <td >{index+1}</td>
             <td >{event.name}</td>
             <td >{event.description}</td>
-            <td >{event.eventDate.startDate}</td>
-            <td >{event.createdAt}</td>
+            <td >{moment(event.eventDate.startDate).format('MMMM Do YYYY')}</td>
+            <td >{moment(event.eventDate.endDate).format('MMMM Do YYYY')}</td>
+            <td >{moment(event.createdAt).format('MMMM Do YYYY')}</td>
             <td>
               <Button id={event._id}  size="sm" color="info">Update</Button>{' '}
-              <Button id={event._id} size="sm" color="danger">Delete</Button>
+              <Button id={event._id} size="sm" color="danger" onClick={this.props.deleteFunc}>Delete</Button>
             </td>
           </tr>
         )}
           
         </tbody>
-      </Table>      
+      </Table>
+      </div>
     )
   }
 }
